@@ -212,7 +212,7 @@ export default function ProductRecommendation() {
                   <h3 className="text-xl font-bold text-primary mb-4">{product.name}</h3>
 
                   {/* Features / Description */}
-                  {product.features ? (
+                  {'features' in product && product.features ? (
                     <ul className="mb-6 space-y-2 flex-grow">
                       {product.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-2 justify-start text-slate-600 text-sm">
@@ -221,9 +221,9 @@ export default function ProductRecommendation() {
                         </li>
                       ))}
                     </ul>
-                  ) : (
+                  ) : 'description' in product ? (
                     <p className="text-sm text-slate-600 mb-6 flex-grow">{product.description}</p>
-                  )}
+                  ) : null}
 
                   <a
                     href={`https://wa.me/918606524578?text=${encodeURIComponent('Hi! I am interested in buying the ' + product.name)}`}
